@@ -1,0 +1,37 @@
+ALGORITHM OperationPhrase
+VAR
+    Longueur,Qmots,Qvoyelles,DUnMot,caractere:INTEGER
+BEGIN
+    Write("Entrez une phrase qui se termine par un point")
+    longueur = 0
+    Qmots = 0
+    Qvoyelles = 0
+    voyelles = "a,e,i,o,u,"
+    DUnMot = False
+    WHILE (caractere!=".") DO
+        Read(caractere)
+        longueur=1
+        IF (caractere=voyelles) THEN
+            Qvoyelles=1
+            IF (caractere="espace") THEN
+                IF(DUnMot="true") THEN
+                    Qmots=1
+                    DUnMot="faux"
+                    ELSE
+                        DUnMot="vrai"
+                    END_IF
+                END_IF
+            END_IF
+        END_IF
+        ELSE
+        Qmots=1
+    END_WHILE
+    Write(longueur)
+    Write(Qmots)
+    Write(Qvoyelles)
+END
+
+
+
+
+
