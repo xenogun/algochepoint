@@ -1,35 +1,48 @@
 ALGORITHM OperationPhrase
 VAR
-    Longueur,Qmots,Qvoyelles,DUnMot,caractere:INTEGER
+    Longueur, Qmots, Qvoyelles: INTEGER
+    DUnMot: BOOLEAN
+    voyelles: STRING
+    caractere: CHAR
 BEGIN
-    Write("Entrez une phrase qui se termine par un point")
-    longueur = 0
-    Qmots = 0
-    Qvoyelles = 0
-    voyelles = "a,e,i,o,u,"
-    DUnMot = False
-    WHILE (caractere!=".") DO
+    Write("Entrez une phrase qui se termine par un point.")
+    Longueur <- 0
+    Qmots <- 0
+    Qvoyelles <- 0
+    voyelles <- "aeiou"
+    DUnMot <- FALSE
+
+    WHILE TRUE DO
         Read(caractere)
-        longueur=1
-        IF (caractere=voyelles) THEN
-            Qvoyelles=1
-            IF (caractere="espace") THEN
-                IF(DUnMot="true") THEN
-                    Qmots=1
-                    DUnMot="faux"
-                    ELSE
-                        DUnMot="vrai"
-                    END_IF
-                END_IF
-            END_IF
+        IF caractere = "." THEN
+            EXIT
         END_IF
+
+        Longueur <- Longueur + 1
+
+        IF caractere IN voyelles THEN
+            Qvoyelles <- Qvoyelles + 1
+        END_IF
+
+        IF caractere = " " THEN
+            IF DUnMot = TRUE THEN
+                Qmots <- Qmots + 1
+                DUnMot <- FALSE
+            END_IF
         ELSE
-        Qmots=1
+            DUnMot <- TRUE
+        END_IF
     END_WHILE
-    Write(longueur)
-    Write(Qmots)
-    Write(Qvoyelles)
+
+    IF DUnMot = TRUE THEN
+        Qmots <- Qmots + 1
+    END_IF
+
+    Write("Longueur de la phrase : ", Longueur)
+    Write("Nombre de mots : ", Qmots)
+    Write("Nombre de voyelles : ", Qvoyelles)
 END
+
 
 
 
