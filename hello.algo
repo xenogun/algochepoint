@@ -6,11 +6,11 @@ VAR
     caractere: CHAR
 BEGIN
     Write("Entrez une phrase qui se termine par un point.")
-    Longueur <- 0
-    Qmots <- 0
-    Qvoyelles <- 0
-    voyelles <- "aeiou"
-    DUnMot <- FALSE
+    Longueur = 0
+    Qmots = 0
+    Qvoyelles = 0
+    voyelles = "aeiou"
+    DUnMot = FALSE
 
     WHILE TRUE DO
         Read(caractere)
@@ -18,24 +18,24 @@ BEGIN
             EXIT
         END_IF
 
-        Longueur <- Longueur + 1
+        Longueur = Longueur + 1
 
         IF caractere IN voyelles THEN
-            Qvoyelles <- Qvoyelles + 1
+            Qvoyelles = Qvoyelles + 1
         END_IF
 
         IF caractere = " " THEN
             IF DUnMot = TRUE THEN
-                Qmots <- Qmots + 1
-                DUnMot <- FALSE
+                Qmots = Qmots + 1
+                DUnMot = FALSE
             END_IF
         ELSE
-            DUnMot <- TRUE
+            DUnMot = TRUE
         END_IF
     END_WHILE
 
     IF DUnMot = TRUE THEN
-        Qmots <- Qmots + 1
+        Qmots = Qmots + 1
     END_IF
 
     Write("Longueur de la phrase : ", Longueur)
